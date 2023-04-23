@@ -201,9 +201,6 @@ def match_template(warped_card, result_array):
     return template
 
 def main():
-    #Uncomment if suits are not processes (current: processed)
-    #suit_preprocess.process()
-
     #Loops through images in cards file
     for root, dirs, files in os.walk("cards"):
         for pic in files:
@@ -214,9 +211,9 @@ def main():
             adult_contours = process_contours(contours, hierarchy)
 
             #Uncomment to see contours
-            #cv2.drawContours(cards, adult_contours, -1, (0, 255, 0), 3)
-            #cv2.imshow('a', cards)
-            #cv2.waitKey(0)
+            cv2.drawContours(cards, adult_contours, -1, (0, 255, 0), 3)
+            cv2.imshow('a', cards)
+            cv2.waitKey(0)
 
             card_corners = get_corners(adult_contours)
             pulled_cards = pull_out_cards(card_corners, cards)
